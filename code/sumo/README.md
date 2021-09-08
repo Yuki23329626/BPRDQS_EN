@@ -1,71 +1,71 @@
-# 關於 sumo 執行環境與安裝、執行方法
+# About sumo execution environment and installation and execution methods
 
-編輯日期：2021/06/27  
-編輯人：沈濃翔  
-信箱：g08410117@ccu.edu.tw  
+Editing date: 2021/06/27
+Editor: Shen Nongxiang
+Mailbox: g08410117@ccu.edu.tw
 
-## 一、環境
+## One, the environment
 
-1. Windows 安裝環境
+1. Windows installation environment
 
-Windows 版本：
-> Windows 10 專業版
+Windows version:
+> Windows 10 Professional
 
-系統：
-> 處理器： Intel(R) Core(TM) i5-6500 CPU @ 3.20GHz 3.19GHz  
-> 記憶體(RAM)： 8.00 GB  
-> 系統類型： 64位元作業系統，x64型處理器  
+system:
+> Processor: Intel(R) Core(TM) i5-6500 CPU @ 3.20GHz 3.19GHz
+> Memory (RAM): 8.00 GB
+> System type: 64-bit operating system, x64 processor
 
-瀏覽器：
-> Chrome 版本 91.0.4472.106 (正式版本) (64 位元)
+Browser:
+> Chrome version 91.0.4472.106 (official version) (64-bit)
 
-## 二、安裝
+## Two, Installation
 
-1. 前往官網下載並執行安裝檔：[官網連結](https://sumo.dlr.de/docs/Installing/index.html#windows)
+1. Go to the official website to download and execute the installation file: [Official website link](https://sumo.dlr.de/docs/Installing/index.html#windows)
 
-## 三、使用 OSM Web Wizard 圈選地圖並生成車流
+## Three, Use OSM Web Wizard to circle the map and generate traffic flow
 
-1. 打開 windows 工作列搜尋 "OSM Web Wizard" 並執行之
+1. Open the windows taskbar and search for "OSM Web Wizard" and execute it
 
-2. OSM Web Wizard 為一 python 檔案，請使用 python 執行該檔案
+2. OSM Web Wizard is a python file, please use python to execute the file
 
-3. 成功執行後會打開瀏覽器，如下圖：
+3. After successful execution, the browser will open, as shown in the figure below:
 
 ![](image/osm_web_page.png)
 
-4. 勾選右方工具列中的 "Select Area" ，選擇適當大小的地圖後，點選右上角的"Generate Scenario" 生成車流  
-(Optional) 取消勾選右方工具列中的 "Add Polygons" 可以不加入建築  
+4. Check "Select Area" in the toolbar on the right, after selecting a map of appropriate size, click "Generate Scenario" in the upper right corner to generate traffic flow
+(Optional) Uncheck "Add Polygons" in the toolbar on the right to not add the building
 
-* 如果使用 OSM Web Wizard 圈選生成地圖時，無法正常生成時，可以嘗試清空瀏覽器 cookie 等設定(可能是一開始使用時，沒有開放瀏覽器的權限給該程式)  
+* If you use the OSM Web Wizard to circle and generate the map, you can try to clear the browser cookies and other settings when it cannot be generated normally.
 
-5. 完成生成之後，會自動開啟 SUMO 主程式，如下圖，記得記下該設定檔儲存路徑
+5. After the generation is completed, the SUMO main program will be automatically opened, as shown in the figure below, remember to write down the storage path of the configuration file
 
 ![](image/sumo_screen_shot.png)
 
-6. 該設定檔下的資料夾應為如下圖所示：
+6. The folder under the profile should be as shown in the figure below:
 
 ![](image/files.png)
 
-7. 可以透過資料夾下的 "osm.passenger.trips.xml" 檔案，設定車輛最大速度，如下圖：
+7. You can set the maximum speed of the vehicle through the "osm.passenger.trips.xml" file under the folder, as shown below:
 
 ![](image/setting_trips.png)
 
 
-8. 透過以下指令生成可以被 NS3 當作 input 的車流路徑檔 (*.tcl)  
+8. Use the following commands to generate traffic path files (*.tcl) that can be used as input by NS3
 
-以下指令為 Windows CMD 下的指令，如有需要記得修改對應的變數  
+The following commands are commands under Windows CMD, remember to modify the corresponding variables if necessary
 
 ``` CMD
 
-:: 設定 CMD 下的環境變數，分別是 config 資料夾所在的路徑、該資料夾名稱，與設定的最大車速
+:: Set the environment variables under CMD, which are the path where the config folder is located, the folder name, and the set maximum speed
 set PATH_TO_CONFIG=D:\github\sumo-learning
 set SUMO_PREFIX=2020-12-12-22-44-15
 set SUMO_MAXSPEED=_max-speed-80
-:: 模擬開始跟結束時間
+:: Simulation start and end time
 set SIM_BEGIN=270
 set SIM_END=420
 
-:: 生成檔案路徑名稱
+:: Generate file path name
 set SUMO_CONFIG=%PATH_TO_CONFIG%\%SUMO_PREFIX%\osm.sumocfg
 set SUMO_XML=%PATH_TO_CONFIG%\%SUMO_PREFIX%\%SUMO_PREFIX%%SUMO_MAXSPEED%.xml
 set SUMO_CSV=%PATH_TO_CONFIG%\%SUMO_PREFIX%\%SUMO_PREFIX%%SUMO_MAXSPEED%.csv
@@ -75,14 +75,13 @@ echo %SUMO_CONFIG%
 echo %SUMO_XML%
 echo %SUMO_TCL%
 
-:: 產生 NS3 可以 input 的 mobility trace file (*.tcl) 到同一個資料夾底下
+:: Generate a mobility trace file (*.tcl) that NS3 can input to the same folder
 sumo -c %SUMO_CONFIG% --fcd-output %SUMO_XML% --step-length 1
 python D:\SUMO\tools\traceExporter.py --fcd-input %SUMO_XML% --ns2mobility-output %SUMO_TCL% --begin %SIM_BEGIN% --end %SIM_END%
 python D:\SUMO\tools\traceExporter.py --fcd-input %SUMO_XML% --gpsdat-output %SUMO_CSV% --begin %SIM_BEGIN% --end %SIM_END%
 
 ```
 
-9. 生成的檔案如下：
+9. The generated files are as follows:
 
 ![](image/trace_files.png)
-

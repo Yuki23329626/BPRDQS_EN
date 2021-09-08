@@ -1,20 +1,20 @@
-# 基本說明與注意事項
+# Basic instructions and precautions
 
-編輯日期：2021/06/27  
-編輯人：沈濃翔  
-信箱：g08410117@ccu.edu.tw  
+Editing date: 2021/09/02
+Editor: Shen Nong Xiang
+Mailbox: g08410117@ccu.edu.tw
 
-## 一、內容
+## 1. Content
 
-1. 本資料夾下包含：
-- code/  
-- overleaf/  
-- turnitin結果.pdf
-- 碩士論文(沈濃翔).docx  
+1. This folder contains:
+-code/
+-overleaf/
+-turnitin results.pdf
+-Master's Thesis (Shen Nongxiang).docx
 
-## 二、說明
+## 2. description
 
-1. code/ 底下包含所有實驗時會用到的程式碼與數據，並且有各自的 README.md 可供查看  
-2. overleaf/ 底下包含我在 overleaf 上撰寫論文時會使用到的圖片，文件等等  
-3. turnitin結果.pdf 為論文比對系統結果  
-4. 碩士論文(沈濃翔).docx 為符合中正大學校園，所要求的格式的論文  
+1. Code/ contains all the code and data that will be used in the experiment, and has its own README.md for viewing
+2. Overleaf/ contains the pictures, files, etc. which I was using when writing the paper on overleaf
+3. The result of turnitin.pdf is the result of the paper comparison system
+4. Master's thesis (Shen Nongxiang).docx is a thesis in the format required by Chung Cheng University campus

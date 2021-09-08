@@ -1,192 +1,192 @@
-# 關於 NS-3 執行環境與安裝、執行方法
+# About NS-3 execution environment, installation and execution method
 
-編輯日期：2021/06/27  
-編輯人：沈濃翔  
-信箱：g08410117@ccu.edu.tw  
+Editing date: 2021/06/27
+Editor: Shen Nongxiang
+Mailbox: g08410117@ccu.edu.tw
 
-## 一、環境
+## One, the environment
 
-1. 查詢 linux 發行版與版本
+1. Check linux release and version
 
 ``` bash
 cat /etc/*-release
 ```
 
-版本相關資訊如下：
-> DISTRIB_ID=Ubuntu  
-> DISTRIB_RELEASE=20.04  
-> DISTRIB_CODENAME=focal  
-> DISTRIB_DESCRIPTION="Ubuntu 20.04.2 LTS"  
-> NAME="Ubuntu"  
-> VERSION="20.04.2 LTS (Focal Fossa)"  
-> ID=ubuntu  
-> ID_LIKE=debian  
-> PRETTY_NAME="Ubuntu 20.04.2 LTS"  
-> VERSION_ID="20.04"  
-> HOME_URL="https://www.ubuntu.com/"  
-> SUPPORT_URL="https://help.ubuntu.com/"  
-> BUG_REPORT_URL="https://bugs.launchpad.net/ubuntu/"  
-> PRIVACY_POLICY_URL="https://www.ubuntu.com/legal/terms-and-policies/  privacy-policy"  
-> VERSION_CODENAME=focal  
-> UBUNTU_CODENAME=focal  
+Version related information is as follows:
+> DISTRIB_ID=Ubuntu
+> DISTRIB_RELEASE=20.04
+> DISTRIB_CODENAME=focal
+> DISTRIB_DESCRIPTION="Ubuntu 20.04.2 LTS"
+> NAME="Ubuntu"
+> VERSION="20.04.2 LTS (Focal Fossa)"
+> ID=ubuntu
+> ID_LIKE=debian
+> PRETTY_NAME="Ubuntu 20.04.2 LTS"
+> VERSION_ID="20.04"
+> HOME_URL="https://www.ubuntu.com/"
+> SUPPORT_URL="https://help.ubuntu.com/"
+> BUG_REPORT_URL="https://bugs.launchpad.net/ubuntu/"
+> PRIVACY_POLICY_URL="https://www.ubuntu.com/legal/terms-and-policies/ privacy-policy"
+> VERSION_CODENAME=focal
+> UBUNTU_CODENAME=focal
 
-2. 查詢系統基本資訊
+2. Query basic system information
 
 ```bash
 uname -a
 ```
 
-系統相關資訊如下：
-> Linux Dell3 5.8.0-53-generic #60~20.04.1-Ubuntu SMP Thu May 6 09:52:46 UTC 2021 x86_64 x86_64 x86_64 GNU/Linux  
+System related information is as follows:
+> Linux Dell3 5.8.0-53-generic #60~20.04.1-Ubuntu SMP Thu May 6 09:52:46 UTC 2021 x86_64 x86_64 x86_64 GNU/Linux
 
-## 二、NS-3 安裝
+## Two, NS-3 installation
 
-1. 依照官網上的教學安裝相對應的前置套件 (Prerequisites章節)：[官網連結](https://www.nsnam.org/wiki/Installation#Installation)
+1. Follow the instructions on the official website to install the corresponding pre-package (Prerequisites chapter): [Official website link](https://www.nsnam.org/wiki/Installation#Installation)
 
-2. 安裝 NS-3 (Installation章節)
-基本是依照官網上的 Manual installation 教學來安裝 ns3，不過部分地方有出入，建議使用下列指令安裝
+2. Install NS-3 (Installation chapter)
+Basically install ns3 according to the manual installation instruction on the official website, but there are some discrepancies in some places, it is recommended to use the following instructions to install
 
 ```bash
 cd
 git clone https://gitlab.com/nsnam/ns-3-allinone.git
 cd ns-3-allinone
-./download.py # 原本在官網上是 ./download.py -n ns-3.30
+./download.py # Originally on the official website is ./download.py -n ns-3.30
 ```
 
-完成之後會出現 "ns-3-dev/" 這個資料夾
+After completion, the folder "ns-3-dev/" will appear
 
-## 三、NS-3 模擬程式執行
+## Three, NS-3 simulation program execution
 
-1. 請進入 "ns-3-dev/" 這個資料夾  
+1. Please enter the folder "ns-3-dev/"
 
 ```bash
 cd
 cd ns-3-allinone/ns-3-dev/
 ```
 
-2. 進行初始化設定
+2. Make initial settings
 
 ```bash
 ./waf clean
 ./waf configure --build-profile=debug --enable-examples --enable-tests
 ```
 
-如果有缺少的套件，這個指令應該會提醒你需要裝哪些套件  
+If there are missing kits, this instruction should remind you which kits you need to install
 
-3. 將必要的資料複製進這個資料夾  
-請將與 README.md 在同一個資料夾的 "ns3-learning/" 複製到 linux 上的 "ns-3-dev/" 資料夾底下  
+3. Copy the necessary data into this folder
+Please copy "ns3-learning/" in the same folder as README.md to the "ns-3-dev/" folder on linux
 
-4. 執行主程式前的注意事項
-- 某些 ns3-learning/ 底下的檔案需要先透過 SUMO 生產出來，可以先去看 sumo/ 底下的另一份 [README.md](../sumo/README.md)
-- 產生出來的 sumo 路徑檔(\*.tcl)，請先使用 "ns3-learning" 底下的 resetSec.py 對秒數進行歸零的動作  
-- 如有需要記得更換為自己的檔案路徑與名稱  
+4. Precautions before running the main program
+-Some files under ns3-learning/ need to be produced through SUMO first, you can read another copy under sumo/ [README.md](../sumo/README.md)
+-The generated sumo path file (\*.tcl), please use resetSec.py under "ns3-learning" to reset the seconds
+-If necessary, remember to change to your own file path and name
 ```bash
 python resetSec.py 2020-12-12-22-44-15/2020-12-12-22-44-15_max-speed-80.tcl
 ```
   
-- 首次執行主程式 (multi_udp.cc) 前請先執行以下指令，我的實驗使用的是 2020-12-12-22-44-15/ 下的資料  
-- 如有需要記得更換為自己的檔案路徑與名稱    
+-Please execute the following commands before running the main program (multi_udp.cc) for the first time. My experiment uses the data under 2020-12-12-22-44-15/
+-If necessary, remember to change to your own file path and name
 
 ```bash
 cp ns3-learning/multi_udp.cc scratch
 cp ns3-learning/2020-12-12-22-44-15/2020-12-12-22-44-15_max-speed-80.tcl scratch
-./waf --run "scratch/multi_udp --traceFile=scratch/2020-12-12-22-44-15_max-speed-80.tcl --numberOfUes=5 --startUe=0 --endUe=4 --isSdnEnabled=true --isDownlink=true --isUplink=true --interAppInterval=1 --interPacketInterval=1000"
+./waf --run "scratch/multi_udp --traceFile=scratch/2020-12-12-22-44-15_max-speed-80.tcl --numberOfUes=5 --startUe=0 --endUe=4 - isSdnEnabled=true --isDownlink=true --isUplink=true --interAppInterval=1 --interPacketInterval=1000"
 ```
 
-首次執行會需要較長的編譯時間，且會占用大量 CPU  
-由於之後會需要執行batch檔 (run.sh)，來一次執行多個模擬程式，先執行一次上面的指令，讓他編譯過一遍  
-之後編譯就不用花那麼多時間與資源  
-出現類似下面的執行結果後，即可按下 ctrl+C 終止程式  
+The first execution will take a long time to compile and will consume a lot of CPU
+Since the batch file (run.sh) will need to be executed later to execute multiple simulation programs at once, execute the above command once and let him compile it again
+It doesn’t take so much time and resources to compile afterwards
+After the execution result similar to the following appears, you can press ctrl+C to terminate the program
 
 ![](image/intermediate_result.png)
 
-5. 執行主程式
-- 先將 shell script (run.sh) 從 ns3-learning/ 複製到 ns-3-dev/ 底下
+5. Run the main program
+-First copy the shell script (run.sh) from ns3-learning/ to ns-3-dev/
 
 ```bash
-cp ns3-learning/run.sh .
+cp ns3-learning/run.sh.
 ```
 
-- 執行腳本
+-Execute script
 
 ```bash
 sh run.sh
 ```
 
-- 腳本有兩種模式，需要可以進入 run.sh 腳本內修改  
-一種是模擬 SDN handover 的模式，一種是使用 4G 原本的 handover 模式 (3GPP-X2)  
-如下圖所示，  
-將 isSdnEnabled 設為 true 則為模擬 SDN handover 的模式  
-將 isSdnEnabled 設為 false 則為使用 4G 原本的 handover 模式  
+-The script has two modes, you can enter the run.sh script to modify it if you need
+One is to simulate the SDN handover mode, and the other is to use the original 4G handover mode (3GPP-X2)
+As shown below,  
+Set isSdnEnabled to true to simulate SDN handover mode
+Set isSdnEnabled to false to use the original 4G handover mode
 
-![](image/sdn_mode.png)  
+![](image/sdn_mode.png)
 
-除此之外，一些參數設定也可以進入 run.sh 中設定  
+In addition, some parameter settings can also be set in run.sh
 
-6. 等待結果
+6. Wait for the result
 
-以上圖中的參數設定為例，當你的  
-prefixTCL 為 "2020-12-12-22-44-15"  
-maxSpeed 為 "_max-speed-80"  
-isSdnEnabled 為 "true"
+Take the parameter settings in the above figure as an example, when your
+prefixTCL is "2020-12-12-22-44-15"
+maxSpeed ​​is "_max-speed-80"
+isSdnEnabled is "true"
 
-則你執行腳本會產出一個名為 "outLog_max-speed-80_udp_sdn/" 的資料夾  
+Then you execute the script and a folder named "outLog_max-speed-80_udp_sdn/" will be generated
 
-7. 印出圖表
+7. Print out the chart
 
-在成功產出 "outLog_max-speed-80_udp_sdn/" 與 "outLog_max-speed-80_udp_lte/" 後  
-先將 python 檔 (diff_time.py) 從 ns3-learning/ 複製到 ns-3-dev/ 底下  
-隨後執行下列指令
+After successfully outputting "outLog_max-speed-80_udp_sdn/" and "outLog_max-speed-80_udp_lte/"
+First copy the python file (diff_time.py) from ns3-learning/ to ns-3-dev/
+Then execute the following command
 
 ```bash
-# outLog_max-speed-80_udp_ 為兩個 output log 共同的 prefix，可視需求更換檔名
-python diff_time.py outLog_max-speed-80_udp_ 
+# outLog_max-speed-80_udp_ is the common prefix of the two output logs, change the file name as required
+python diff_time.py outLog_max-speed-80_udp_
 ```
 
-diff_time.py 這個檔案，做的事情主要有三件：  
-- 找出 sdn handover time 的時間點，隨後在各個 log 檔中，抓出 handover 前後的區間  
-- 在這些區間中，整理出各種不同的 route 下的 throughput，以此來計算出 upload 與 download 的 delay  
-- 隨後印出 3GPP-X2 (傳統 4G 的作法) 跟 SDN handover 上的區別  
+The diff_time.py file mainly does three things:
+-Find out the time point of sdn handover time, and then grab the interval before and after handover in each log file
+-In these intervals, sort out the throughput under various routes to calculate the upload and download delays
+-Then printed the difference between 3GPP-X2 (traditional 4G practice) and SDN handover
 
-最後會匯出成一個名為 "outLog_max-speed-80_udp_" 的資料夾  
-裡面的資料是當作 cache 使用，節省程式執行與 debug 的時間  
-如果需要使用新資料集重跑程式需要將此資料夾刪除  
+Finally, it will be exported into a folder named "outLog_max-speed-80_udp_"
+The data inside is used as cache, saving the time of program execution and debugging
+If you need to rerun the program with a new data set, you need to delete this folder
 
-8. 計算 delay  
+8. Calculate delay
 
 ```bash
 python response_delay.py
 ```
 
-## 四、常用指令筆記
+## Four, common instruction notes
 
-1. optimized 模式
+1. Optimized mode
 
-也許可以節省一點執行時間，但是有一些 log 的資訊無法印出來  
+It may save a bit of execution time, but some log information cannot be printed
 
 ```bash
 ./waf clean
 ./waf configure --build-profile=optimized --enable-examples --enable-tests
 ```
 
-2. 列出 NS_LOG_COMPONENT_DEFINE
+2. List NS_LOG_COMPONENT_DEFINE
 
-這個指令可以列出 NS_LOG_COMPONENT，  
-在 ns3 主程式 (multi_udp.cc) 內可以撰寫來選擇想看哪些 component 所產出的 log  
-
-```bash
-find . -name '*.cc' | xargs grep NS_LOG_COMPONENT_DEFINE
-```
-
-3. 用來搜尋特定 component 
+This command can list NS_LOG_COMPONENT,
+You can write in the ns3 main program (multi_udp.cc) to choose which component you want to see the log generated
 
 ```bash
-find . -name '*.cc' | xargs grep NS_LOG_COMPONENT_DEFINE | grep -i sink
+find. -name'*.cc' | xargs grep NS_LOG_COMPONENT_DEFINE
 ```
 
-grep -i 為 忽略大小寫  
+3. Used to search for specific components
 
-4. 一些 NS3 的 log 可以透過設定環境變數來顯示
+```bash
+find. -name'*.cc' | xargs grep NS_LOG_COMPONENT_DEFINE | grep -i sink
+```
+
+grep -i ignores case
+
+4. Some NS3 logs can be displayed by setting environment variables
 
 ```bash
 export NS_LOG=UdpL4Protocol
