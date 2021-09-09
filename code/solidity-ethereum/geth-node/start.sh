@@ -15,4 +15,5 @@ else
    echo "======== account exist ========"
 fi
 
-geth --rinkeby --unlock 0xf9BCe4e8708445f6113C620836925f8aEaFFC0B9 --rpc --rpcaddr "0.0.0.0" --rpccorsdomain "*" --rpcvhosts=* --password ~/.accountpassword --etherbase $address 2> /root/geth.log
+# geth --rinkeby --unlock 0xf9BCe4e8708445f6113C620836925f8aEaFFC0B9 --rpc --rpcaddr "0.0.0.0" --rpccorsdomain "*" --rpcvhosts=* --password ~/.accountpassword --etherbase $address 2> /root/geth.log
+geth --rinkeby --rpcapi "admin,debug,miner,personal,txpool,eth,net,web3" --rpc --rpcaddr "0.0.0.0" --rpccorsdomain "*" --rpcvhosts=* --password ~/.accountpassword --etherbase $address  2> /root/geth.log
