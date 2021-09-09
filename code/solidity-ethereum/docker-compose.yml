@@ -13,6 +13,9 @@ services:
     networks:
       - bprdqs
     
+volumes:  
+  root:
+
 networks:
   bprdqs:
     driver: bridge
