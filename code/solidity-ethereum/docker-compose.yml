@@ -5,13 +5,11 @@ services:
     build:
       context: geth-node/
     volumes:
-      - /root:root
+      - root:/root
       - /etc/localtime:/etc/localtime:ro
     tty: true
     ports:
       - "8545:8545"
-      - "30313:30303"
-      - "30313:30303/udp"
     networks:
       - bprdqs
     
