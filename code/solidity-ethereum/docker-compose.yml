@@ -5,6 +5,7 @@ services:
     build:
       context: geth-node/
     volumes:
+      - /root/.ethereum:./.ethereum:ro
       - /etc/localtime:/etc/localtime:ro
     tty: true
     ports:
