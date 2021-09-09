@@ -4,6 +4,9 @@ services:
   geth-node:
     build:
       context: geth-node/
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+    tty: true
     ports:
       - "8545:8545"
       - "30313:30303"
