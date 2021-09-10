@@ -5,16 +5,18 @@ services:
     build:
       context: geth-node/
     volumes:
-      - root/.ethereum:/root/.ethereum
+      - data:/root
       - /etc/localtime:/etc/localtime:ro
     tty: true
     ports:
       - "8545:8545"
+      - "30303:30303"
+      - "30303:30303/udp"
     networks:
       - bprdqs
     
 volumes:  
-  root:
+  data:
 
 networks:
   bprdqs:
