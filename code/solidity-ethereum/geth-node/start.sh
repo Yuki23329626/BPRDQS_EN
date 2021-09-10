@@ -10,7 +10,7 @@ if [ $isInFile -eq 0 ]; then
     echo "======== acoount no exist! Starting import! ========"
     echo "" > ~/.accountpassword
     echo $privatekey > ~/.privatekey
-    geth --rinkeby account import --datadir=$datadir --password ~/.accountpassword  ~/.privatekey
+    geth --rinkeby account import --password ~/.accountpassword  ~/.privatekey
 else
    echo "======== account exist ========"
 fi
