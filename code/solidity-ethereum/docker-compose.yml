@@ -2,11 +2,16 @@ version: '3.3'
 
 services:
   geth-node:
+<<<<<<< HEAD
     volumes:
       - ./data:/root:rw
       - /etc/localtime:/etc/localtime:ro
+=======
+>>>>>>> f7f6a6251b308f095d35220f24192246bdac1bbc
     build:
       context: geth-node/
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
     tty: true
     ports:
       - "8545:8545"
