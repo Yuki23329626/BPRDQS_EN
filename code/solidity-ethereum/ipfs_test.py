@@ -1,10 +1,11 @@
 from web3 import Web3
-w3 = Web3(Web3.HTTPProvider('https://rinkeby.infura.io/v3/3c8c82c3951c4cf3b61586b0202981c1'))
+from web3.middleware import geth_poa_middleware
 
-print(w3.isConnected())
+web3 = Web3(Web3.HTTPProvider('https://rinkeby.infura.io/v3/3c8c82c3951c4cf3b61586b0202981c1'))
 
-w3.eth.get_block('latest')
+# necessary for Rinkey
+web3.middleware_onion.inject(geth_poa_middleware, layer=0)
 
-latest_block = web3.eth.get_block('latest')
+print(web3.clientVersion)
 
-print(latest_block)
+print(web3.eth.get_block('latest'))
