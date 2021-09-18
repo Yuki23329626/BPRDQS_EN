@@ -7,10 +7,10 @@ Mailbox: g08410117@ccu.edu.tw
 ## 1. Content
 
 1. This folder contains:
--code/
--overleaf/
--turnitin results.pdf
--Master's Thesis (Shen Nongxiang).docx
+- code/  
+- overleaf/  
+- turnitin results.pdf  
+- Master's Thesis (Shen Nongxiang).docx  
 
 ## 2. description
 
