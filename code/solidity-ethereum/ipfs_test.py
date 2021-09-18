@@ -5,4 +5,6 @@ print(w3.isConnected())
 
 w3.eth.get_block('latest')
 
-block = web3.eth.get_block('latest')
+latest_block = web3.eth.get_block('latest')
+
+print(latest_block)
