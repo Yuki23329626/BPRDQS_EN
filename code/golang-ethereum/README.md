@@ -55,7 +55,7 @@ Remark:
 > The main program (main.go) implements all the cryptographic algorithms mentioned in the paper  
 > It should be noted that the H1 hash function is defined as G1 -> {0,1}^(4λ)   
 > Because I did not find a reliable or universal way to implement  
-> My approach is to implement a function (Hash1) that can eat an element under G1 (hereinafter referred to as data)  
+> My approach is to implement a function (Hash1) that can take an element under G1 as an input (hereinafter referred to as data)  
 > I use sha256 to convert data into sha256 format, which forms a fixed-length hash value  
 > I repeat the hash value 4 times and then concatenate it, that is to say, my λ is set to double the length of the hash value  
 > Finally, the returned result of hash1 will be similar to this form: (sha256(data)||sha256(data)||sha256(data)||sha256(data))  
