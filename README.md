@@ -1,8 +1,8 @@
-# Basic instructions and precautions
+# Basic instructions and precautions  
 
-Editing date: 2021/09/02
-Editor: Nong-Xiang, Shen 
-Mailbox: g08410117@ccu.edu.tw
+Editing date: 2021/09/02  
+Editor: Nong-Xiang Shen  
+Mailbox: g08410117@ccu.edu.tw  
 
 ## 1. Content
 
