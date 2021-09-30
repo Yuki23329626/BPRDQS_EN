@@ -1,0 +1,52 @@
+1_BPRDQS.js
+===========
+
+   Deploying 'bprdqs'
+   ------------------
+   > transaction hash:    0xe9400667a8514dcd83ca4f665d0f044d4b686dbc531f0df0a77c0106195788c2
+   > Blocks: 2            Seconds: 21
+   > contract address:    0x4410c9529e9a8a9343436Fd5d4ce0c72131538e7
+   > block number:        9380757
+   > block timestamp:     1632968536
+   > account:             0x382e347f834E1C897ec965eB1Af2b673900257d4
+   > balance:             18.74127123
+   > gas used:            633692 (0x9ab5c)
+   > gas price:           10 gwei
+   > value sent:          0 ETH
+   > total cost:          0.00633692 ETH
+
+
+   > Saving migration to chain.
+   > Saving artifacts
+   -------------------------------------
+   > Total cost:          0.00633692 ETH
+
+
+2_BPREET.js
+===========
+
+   Deploying 'bpreet'
+   ------------------
+   > transaction hash:    0x708974a4051ddf69112472adc0b971a5cf7edcb980494a10dbacc75a779c5f18
+   > Blocks: 1            Seconds: 9
+   > contract address:    0x9e457520A893e10282513313556d7Cbc90F63aCC
+   > block number:        9380759
+   > block timestamp:     1632968566
+   > account:             0x382e347f834E1C897ec965eB1Af2b673900257d4
+   > balance:             18.69929234
+   > gas used:            4172051 (0x3fa913)
+   > gas price:           10 gwei
+   > value sent:          0 ETH
+   > total cost:          0.04172051 ETH
+
+
+   > Saving migration to chain.
+   > Saving artifacts
+   -------------------------------------
+   > Total cost:          0.04172051 ETH
+
+
+Summary
+=======
+> Total deployments:   2
+> Final cost:          0.04805743 ETH
